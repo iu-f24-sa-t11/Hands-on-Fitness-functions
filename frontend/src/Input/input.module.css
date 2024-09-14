@@ -1,0 +1,20 @@
+.form {
+    display: flex;
+    align-items: center;
+}
+
+.input {
+    border: 1px solid var(--gray);
+    background: var(--dark);
+    opacity: 70%;
+    border-radius: 1em;
+    width: 100%;
+    padding: 1em 2em;
+    font-size: 16px;
+    box-sizing: border-box;
+    color: var(--white);
+}
+
+.input:focus{
+    outline: none;
+}

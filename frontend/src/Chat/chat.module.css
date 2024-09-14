@@ -1,0 +1,13 @@
+.chat_item{
+    border: 1px solid var(--gray);
+    background-color: rgba(36, 36, 36, 0.3);
+    border-radius: 1em;
+
+    width: 100%;
+    height: fit-content;
+
+    padding: 1em;
+    font-size: 16px;
+    box-sizing: border-box;
+    color: var(--white);
+}
