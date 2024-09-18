@@ -9,7 +9,7 @@
 | Azamat Bayramov | B22-SD-03 | a.bayramov@innopolis.university |
 | Darya Koncheva  | B22-SD-02 | d.koncheva@innopolis.university |
 | Matthew Rusakov | #TODO     | #TODO                           |
-| Egor Valikov    | #TODO     | #TODO                           |
+| Egor Valikov    | B22-CBS-01| e.valikov@innopolis.university  |
 
 ## Project Structure
 #TODO
