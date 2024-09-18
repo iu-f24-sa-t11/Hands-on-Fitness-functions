@@ -1,2 +1,5 @@
-FROM ubuntu
-CMD ["echo", "hello world"]
+FROM node:latest
+
+COPY ./ ./
+
+CMD ["npm", "run", "preview"]

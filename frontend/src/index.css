@@ -1,0 +1,61 @@
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    --dark: #242424;
+    --white: white;
+    --primary: #535bf2;
+    --gray: #777777;
+
+    /*background: linear-gradient(135deg, var(--dark), #6A0DAD);*/
+    /*background: radial-gradient(circle, #242424, #3B0066 30%, #6A0DAD 50%, #242424 70%);*/
+    /*background: radial-gradient(#edf1cf, #43acb4);*/
+    /*background: linear-gradient(45deg, #a8edea, #fed6e3);*/
+    background: radial-gradient(circle, var(--primary), var(--dark));
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+    width: 50%;
+}
+
+@media (max-width: 1440px) {
+    #root {
+        width: 70%; /* Уменьшаем ширину на планшетах */
+        font-size: 1.1em; /* Уменьшаем размер шрифта на планшетах */
+    }
+}
+
+@media (max-width: 768px) {
+    #root {
+        width: 100%; /* Полная ширина на мобильных устройствах */
+        padding: 1rem; /* Уменьшаем отступы для мобильных устройств */
+        font-size: 1.2em; /* Уменьшаем размер шрифта на мобильных устройствах */
+    }
+}
+
+body {
+    margin: 0;
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+}
+
+h1 {
+    font-size: 2em;
+    color: white;
+}
