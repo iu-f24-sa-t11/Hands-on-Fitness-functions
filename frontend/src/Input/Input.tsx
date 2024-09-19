@@ -1,7 +1,7 @@
 // @ts-ignore
 import styles from './input.module.css';
 import {FormEvent, useState} from "react";
-import sendSvg from "../static/send.svg";
+import {SendIcon} from "../static/SendIcon.tsx";
 
 interface SearchProps {
     placeholder: string;
@@ -30,7 +30,7 @@ export const Input = ({placeholder, onSubmit}: SearchProps) => {
                 rows={5}
             />
             <button type="submit" className={styles.submit_button}>
-                <img src={sendSvg} alt="send" style={{width: 30, height: 30}}/>
+                <SendIcon/>
             </button>
         </form>
     );
