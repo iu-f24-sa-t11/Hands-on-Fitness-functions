@@ -15,10 +15,20 @@ export const Input = ({placeholder, onSubmit}: SearchProps) => {
 
     // Устанавливаем фокус на textarea при каждом рендере
     useEffect(() => {
+        const savedValue = sessionStorage.getItem('textareaValue');
+        if (savedValue) {
+            setInputValue(savedValue);
+        }
+
         if (textareaRef.current) {
             textareaRef.current.focus();
         }
     }, []);
+
+    // Обновляем sessionStorage при каждом изменении inputValue
+    useEffect(() => {
+        sessionStorage.setItem('textareaValue', inputValue);
+    }, [inputValue]);
 
     // Обработчик отправки формы
     const handleSubmit = (e: FormEvent<HTMLFormElement> | KeyboardEvent) => {
@@ -27,6 +37,7 @@ export const Input = ({placeholder, onSubmit}: SearchProps) => {
         if (trimmedValue) {
             onSubmit(trimmedValue);
             setInputValue(""); // Очистка поля
+            sessionStorage.removeItem('textareaValue'); // Удаляем сохраненное значение после отправки
         }
     };
 

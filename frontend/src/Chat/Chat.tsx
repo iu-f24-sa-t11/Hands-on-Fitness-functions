@@ -13,6 +13,11 @@ interface Message {
     created_at: string;
 }
 
+const errorMessages = [
+    {"text": "Connection lost.", "created_at": ""},
+    {"text": "Page will be reloaded in 5 seconds.", "created_at": ""}
+]
+
 export const Chat = () => {
     const [messages, setMessages] = useState<Message[]>([]);
     const messagesEndRef = useRef<HTMLDivElement | null>(null);
@@ -40,6 +45,22 @@ export const Chat = () => {
             addMessage(newMessage);
         };
 
+        socketRef.current.onclose = () => {
+            setMessages(errorMessages);
+            console.log("Соединение закрыто. Перезагрузка страницы");
+            setTimeout(() => {
+                window.location.reload();
+            }, 5000);
+        }
+
+        socketRef.current.onerror = () => {
+            setMessages(errorMessages);
+            console.log("Ошибка соединения. Перезагрузка страницы");
+            setTimeout(() => {
+                window.location.reload();
+            }, 5000);
+        }
+
         return () => {
             if (socketRef.current) {
                 socketRef.current.close();
@@ -65,7 +86,9 @@ export const Chat = () => {
                 {messages.map((message, index) => (
                     <ChatItem key={index}
                               text={message.text}
-                              date={moment.utc(message.created_at).local().format('HH:mm DD.MM.YYYY')}/>
+                              date={
+                        message.created_at === "" ? "System Message" : (moment.utc(message.created_at).local().format('HH:mm DD.MM.YYYY'))
+                    }/>
                 ))}
                 <div ref={messagesEndRef}/>
             </div>
