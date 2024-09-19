@@ -7,12 +7,22 @@ def count_lines(file_path):
         return sum(1 for _ in file)
 
 
-def extract_classes_and_functions(file_path):
+def extract_classes_and_functions_back(file_path):
     with open(file_path, 'r', encoding='utf-8') as file:
         content = file.read()
 
     classes = re.findall(r'class\s+\w+', content)
     functions = re.findall(r'def\s+\w+', content)
+
+    return classes, functions
+
+
+def extract_classes_and_functions_front(file_path):
+    with open(file_path, 'r', encoding='utf-8') as file:
+        content = file.read()
+
+    classes = re.findall(r'interface\s+\w+', content)
+    functions = re.findall(r'const\s+\w+', content)
 
     return classes, functions
 
@@ -32,7 +42,7 @@ def calculate_frontend(directory):
                 file_length = count_lines(file_path)
                 file_lengths.append(file_length)
 
-                classes, functions = extract_classes_and_functions(file_path)
+                classes, functions = extract_classes_and_functions_front(file_path)
                 if classes:
                     class_lengths.extend([file_length / len(classes)] * len(classes))
                 if functions:
@@ -65,9 +75,9 @@ def calculate_backend(directory):
                 file_length = count_lines(file_path)
                 file_lengths.append(file_length)
 
-                classes, functions = extract_classes_and_functions(file_path)
+                classes, functions = extract_classes_and_functions_back(file_path)
                 if classes:
-                        class_lengths.extend([file_length / len(classes)] * len(classes))
+                    class_lengths.extend([file_length / len(classes)] * len(classes))
                 if functions:
                     function_lengths.extend([file_length / len(functions)] * len(functions))
 
