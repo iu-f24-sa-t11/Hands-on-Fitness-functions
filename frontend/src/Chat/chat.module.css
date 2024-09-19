@@ -17,6 +17,20 @@
     margin-bottom: 1em;
 }
 
+@media (max-width: 1440px) {
+    .chat_item {
+        min-width: 50%;
+        max-width: 70%;
+    }
+}
+
+@media (max-width: 768px) {
+    .chat_item {
+        min-width: 100%;
+        max-width: 100%;
+    }
+}
+
 .chat_text {
     margin: 0;
     text-align: left;
@@ -36,8 +50,7 @@
     flex-direction: column;
     height: 85vh;
     margin-top: 2em;
-    padding: 1em;
-    padding-top: 0;
+    padding: 0 1em 1em;
     border-radius: 1em;
 }
 
