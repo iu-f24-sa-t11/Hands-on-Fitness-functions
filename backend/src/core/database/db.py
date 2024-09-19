@@ -2,7 +2,6 @@ from beanie import init_beanie
 from motor import motor_asyncio
 
 from config import DB_HOST, DB_NAME
-
 from core.database.models.message import Message
 
 ALL_MODELS = [

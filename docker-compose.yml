@@ -21,6 +21,8 @@ services:
       context: ./backend
     networks:
       - app_network
+    env_file:
+      - .env
     restart: unless-stopped
     depends_on:
       - mongodb
@@ -48,9 +50,9 @@ services:
       - "80:80"
       - "443:443"
       - "443:443/udp"
-    restart: unless-stopped
     env_file:
       - .env
+    restart: unless-stopped
     depends_on:
       - backend
       - frontend

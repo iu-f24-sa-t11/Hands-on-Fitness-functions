@@ -1,5 +1,4 @@
 from fastapi import APIRouter
-from starlette.responses import HTMLResponse
 from starlette.websockets import WebSocket, WebSocketDisconnect
 
 from api.message.schemas import CreateMessage, MessageDTO
@@ -33,53 +32,3 @@ async def websocket_endpoint(websocket: WebSocket):
             await websocket_manager.broadcast(MessageDTO.model_validate(message, from_attributes=True))
     except WebSocketDisconnect:
         websocket_manager.disconnect(websocket)
-
-@router.get("/frontend")
-async def get_frontend():
-    html_content = """
-    <!DOCTYPE html>
-    <html>
-        <head>
-            <title>Chat</title>
-        </head>
-        <body>
-            <h1>Chat</h1>
-            <ul id="messages"></ul>
-            <input id="message" type="text">
-            <button onclick="sendMessage()">Send</button>
-            <script>
-                // get all messages
-                fetch('/api/messages')
-                    .then(response => response.json())
-                    .then(messages => {
-                        var messagesList = document.getElementById('messages');
-                        messages.forEach(message => {
-                            var messageElement = document.createElement('li');
-                            var messageText = document.createTextNode(message.text);
-                            messageElement.appendChild(messageText);
-                            messagesList.appendChild(messageElement);
-                        });
-                    });
-                
-                var ws = new WebSocket("ws://localhost/api/messages/ws");
-                ws.onmessage = function(event) {
-                    var messagesList = document.getElementById('messages');
-                    var messageElement = document.createElement('li');
-                    var eventData = JSON.parse(event.data);
-                    var eventData = JSON.parse(eventData);
-                    console.log(eventData);
-                    console.log(eventData.text);
-                    var messageText = document.createTextNode(eventData.text);
-                    messageElement.appendChild(messageText);
-                    messagesList.appendChild(messageElement);
-                };
-                function sendMessage() {
-                    var input = document.getElementById('message');
-                    ws.send(input.value);
-                    input.value = '';
-                }
-            </script>
-        </body>
-    </html>
-    """
-    return HTMLResponse(content=html_content, status_code=200)
