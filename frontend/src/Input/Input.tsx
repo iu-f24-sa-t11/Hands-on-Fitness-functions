@@ -1,6 +1,6 @@
 // @ts-ignore
 import styles from './input.module.css';
-import {FormEvent, useState} from "react";
+import {FormEvent, useState, KeyboardEvent} from "react";
 import {SendIcon} from "../static/SendIcon.tsx";
 
 interface SearchProps {
@@ -20,12 +20,20 @@ export const Input = ({placeholder, onSubmit}: SearchProps) => {
         }
     };
 
+    const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            handleSubmit(e as unknown as FormEvent<HTMLFormElement>);
+        }
+    };
+
     return (
         <form className={styles.form} onSubmit={handleSubmit}>
             <textarea
                 placeholder={placeholder}
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
+                onKeyDown={handleKeyDown}
                 className={styles.input}
                 rows={5}
             />
