@@ -1,8 +1,7 @@
 # Assignment 2 - Hands-on: Fitness Functions
 
 ## Course
-Innopolis University
-Software Architecture
+Innopolis University, Fall 2024, Software Architecture
 
 ## Team 11
 | Full name       | Group     | Email                           |
