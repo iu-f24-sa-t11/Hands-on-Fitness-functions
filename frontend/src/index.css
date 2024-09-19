@@ -23,7 +23,7 @@
 #root {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 1rem;
     text-align: center;
     width: 50%;
 }
@@ -38,7 +38,6 @@
 @media (max-width: 768px) {
     #root {
         width: 100%; /* Полная ширина на мобильных устройствах */
-        padding: 1rem; /* Уменьшаем отступы для мобильных устройств */
         font-size: 1.2em; /* Уменьшаем размер шрифта на мобильных устройствах */
     }
 }
