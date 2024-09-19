@@ -1,0 +1,58 @@
+volumes:
+  db_data:
+  caddy_data:
+  caddy_config:
+
+networks:
+  app_network:
+    driver: bridge
+
+services:
+  mongodb:
+    image: mongo:7-jammy
+    volumes:
+      - db_data:/data/db
+    networks:
+      - app_network
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./backend
+    networks:
+      - app_network
+    env_file:
+      - .env
+    restart: unless-stopped
+    depends_on:
+      - mongodb
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        DOMAIN: ${DOMAIN}
+    networks:
+      - app_network
+    env_file:
+      - .env
+    restart: unless-stopped
+
+  caddy:
+    image: caddy:2
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - app_network
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    env_file:
+      - .env
+    restart: unless-stopped
+    depends_on:
+      - backend
+      - frontend

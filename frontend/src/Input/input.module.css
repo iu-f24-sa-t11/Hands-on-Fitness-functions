@@ -1,0 +1,33 @@
+.form {
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    gap: 0.5em;
+    background: var(--dark);
+    opacity: 70%;
+    border-radius: 1em;
+    padding: 1em;
+}
+
+.input {
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    font-size: 16px;
+    color: var(--white);
+    resize: none;
+}
+
+.submit_button {
+    background-color: transparent;
+    color: var(--white);
+    border: none;
+    border-radius: 100em;
+    padding: 1em;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.input:focus, .submit_button:focus {
+    outline: none;
+}
