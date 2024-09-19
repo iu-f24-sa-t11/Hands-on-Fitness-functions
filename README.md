@@ -12,4 +12,11 @@ Innopolis University, Fall 2024, Software Architecture
 | Egor Valikov    | B22-CBS-01| e.valikov@innopolis.university  |
 
 ## Project Structure
-#TODO
+#### Backend
+FastAPI powers the anonymous chat system, handling message processing and storage. MongoDB is used to store messages while maintaining user anonymity.
+
+#### Frontend
+Developed with React, TypeScript, and Vite, providing a user-friendly interface for sending and receiving anonymous messages.
+
+#### Caddy
+Functions as a reverse proxy for both frontend and backend services, enabling secure HTTPS connections to protect user anonymity and data integrity.
