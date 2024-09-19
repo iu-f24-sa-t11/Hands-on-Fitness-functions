@@ -42,12 +42,16 @@ export const Chat = () => {
 
         socketRef.current.onclose = () => {
             console.log("Соединение закрыто. Перезагрузка страницы");
-            window.location.reload();
+            setTimeout(() => {
+                window.location.reload();
+            }, 5000);
         }
 
         socketRef.current.onerror = () => {
             console.log("Ошибка соединения. Перезагрузка страницы");
-            window.location.reload();
+            setTimeout(() => {
+                window.location.reload();
+            }, 5000);
         }
 
         return () => {
