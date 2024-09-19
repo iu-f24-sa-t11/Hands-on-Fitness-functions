@@ -33,7 +33,7 @@ export const Chat = () => {
         };
         fetchMessages();
 
-        socketRef.current = new WebSocket("ws://" + domain + "/api/messages/ws");
+        socketRef.current = new WebSocket("https://" + domain + "/api/messages/ws");
 
         socketRef.current.onmessage = (event) => {
             const newMessage: Message = JSON.parse(JSON.parse(event.data));
