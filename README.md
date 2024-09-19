@@ -23,6 +23,7 @@ Functions as a reverse proxy for both frontend and backend services, enabling se
 
 #### Structure tree
 
+```
 /project-root
     ├── backend/                 
     │   ├── src/
@@ -60,4 +61,4 @@ Functions as a reverse proxy for both frontend and backend services, enabling se
     ├── Caddyfile                
     ├── README.md               
     ├── docker-compose.yml
-
+```
