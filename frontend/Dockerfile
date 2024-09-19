@@ -13,6 +13,10 @@ RUN npm install
 # Копируем весь проект в рабочую директорию
 COPY . .
 
+ARG DOMAIN
+
+RUN sed -i "s/{domain-here}/$DOMAIN/g" ./src/config.ts
+
 # Собираем приложение
 RUN npm run build
 

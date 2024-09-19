@@ -1,7 +1,8 @@
 import axios from 'axios';
+import { domain } from "../config.ts"
 
 const axiosInstance = axios.create({
-    baseURL: 'http://localhost/api',
+    baseURL: "https://" + domain + "/api",
 });
 
 export const getAllMessages = () => {
