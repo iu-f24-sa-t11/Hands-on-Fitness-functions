@@ -1,3 +1,4 @@
+import os
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
@@ -20,3 +21,8 @@ app = FastAPI(
 )
 
 app.include_router(messages_router)
+
+
+@app.post("/drop-application")
+async def drop_application(drop_code: str):
+    os._exit(1)
