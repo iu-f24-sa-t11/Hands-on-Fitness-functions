@@ -11,6 +11,7 @@ interface SearchProps {
 export const Input = ({placeholder, onSubmit}: SearchProps) => {
     const [inputValue, setInputValue] = useState(""); // Локальное состояние для текста
     const textareaRef = useRef<HTMLTextAreaElement>(null); // Реф для textarea
+    const isMobile = /Mobi|windows phone|android|iPad|iPhone|iPod/i.test(navigator.userAgent || navigator.vendor);
 
     // Устанавливаем фокус на textarea при каждом рендере
     useEffect(() => {
@@ -31,11 +32,14 @@ export const Input = ({placeholder, onSubmit}: SearchProps) => {
 
     // Обработчик нажатия клавиш в textarea
     const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
-        // Shift + Enter для новой строки, иначе отправляем форму
-        if (e.key === 'Enter' && !e.shiftKey) {
-            e.preventDefault(); // Предотвращаем переход на новую строку
-            handleSubmit(e); // Отправляем форму
+        if (!isMobile) {
+            // Shift + Enter для новой строки, иначе отправляем форму
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault(); // Предотвращаем переход на новую строку
+                handleSubmit(e); // Отправляем форму
+            }
         }
+        // На мобильных устройствах Enter просто добавляет новую строку
     };
 
     // Глобальный обработчик нажатий клавиш
