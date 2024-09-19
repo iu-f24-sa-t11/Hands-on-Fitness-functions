@@ -1,9 +1,12 @@
 # Assignment 2 - Hands-on: Fitness Functions
 
 ## Course
-#TODO
+Innopolis University
+Software Architecture
+Assignment 2
+Hands-on: Fitness Functions
 
-## Team
+## Team 11
 | Full name       | Group     | Email                           |
 |-----------------|-----------|---------------------------------|
 | Azamat Bayramov | B22-SD-03 | a.bayramov@innopolis.university |
