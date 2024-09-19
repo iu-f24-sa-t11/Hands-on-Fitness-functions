@@ -22,6 +22,12 @@ async def get_messages_count():
     return await MessageService.get_messages_count()
 
 
+@router.delete("/")
+async def delete_all_messages(delete_code: str):
+    await MessageService.delete_all_messages(delete_code)
+    return {"message": "All messages has been deleted."}
+
+
 @router.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
     await websocket_manager.connect(websocket)
