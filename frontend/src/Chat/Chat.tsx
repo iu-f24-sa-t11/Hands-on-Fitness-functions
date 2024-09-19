@@ -65,7 +65,7 @@ export const Chat = () => {
                 {messages.map((message, index) => (
                     <ChatItem key={index}
                               text={message.text}
-                              date={moment(message.created_at).format('HH:mm DD.MM.YYYY')}/>
+                              date={moment.utc(message.created_at).local().format('HH:mm DD.MM.YYYY')}/>
                 ))}
                 <div ref={messagesEndRef}/>
             </div>
