@@ -6,6 +6,7 @@ import {ChatItem} from './ChatItem';
 import {getAllMessages} from "../api/requests.ts";
 
 import moment from 'moment';
+import {domain} from "../config.ts";
 
 interface Message {
     text: string;
@@ -32,7 +33,7 @@ export const Chat = () => {
         };
         fetchMessages();
 
-        socketRef.current = new WebSocket("ws://localhost/api/messages/ws");
+        socketRef.current = new WebSocket("https://" + domain + "/api/messages/ws");
 
         socketRef.current.onmessage = (event) => {
             const newMessage: Message = JSON.parse(JSON.parse(event.data));

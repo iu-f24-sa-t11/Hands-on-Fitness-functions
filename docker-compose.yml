@@ -28,8 +28,12 @@ services:
   frontend:
     build:
       context: ./frontend
+      args:
+        DOMAIN: ${DOMAIN}
     networks:
       - app_network
+    env_file:
+      - .env
     restart: unless-stopped
 
   caddy:
@@ -45,6 +49,8 @@ services:
       - "443:443"
       - "443:443/udp"
     restart: unless-stopped
+    env_file:
+      - .env
     depends_on:
       - backend
       - frontend
