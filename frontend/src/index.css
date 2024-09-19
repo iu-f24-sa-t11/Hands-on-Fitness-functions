@@ -12,10 +12,6 @@
     --primary: #535bf2;
     --gray: #777777;
 
-    /*background: linear-gradient(135deg, var(--dark), #6A0DAD);*/
-    /*background: radial-gradient(circle, #242424, #3B0066 30%, #6A0DAD 50%, #242424 70%);*/
-    /*background: radial-gradient(#edf1cf, #43acb4);*/
-    /*background: linear-gradient(45deg, #a8edea, #fed6e3);*/
     background: radial-gradient(circle, var(--primary), var(--dark));
 }
 
@@ -52,7 +48,7 @@ body {
     display: flex;
     place-items: center;
     min-width: 320px;
-    min-height: 100vh;
+    height: 100vh;
 }
 
 h1 {
